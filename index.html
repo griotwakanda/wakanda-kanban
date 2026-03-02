@@ -3,21 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wakanda Kanban</title>
+    <title>Wakanda Board</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="header">
-      <h1>Wakanda Kanban</h1>
+      <h1>✨ Wakanda Board</h1>
       <p>High-level project board for Daniel</p>
     </header>
 
-    <main>
+    <main class="layout">
+      <section class="cron-section" aria-labelledby="cron-heading">
+        <h2 id="cron-heading">⏰ Current Cron Jobs</h2>
+        <div id="cron-jobs" class="cron-jobs" aria-live="polite"></div>
+      </section>
+
       <div id="board" class="board" aria-live="polite"></div>
+
       <footer class="footer">
         <small id="last-updated" class="last-updated" aria-live="polite"></small>
       </footer>
     </main>
+
+    <template id="cron-template">
+      <article class="cron-card">
+        <h3 class="cron-title"></h3>
+        <p class="cron-schedule"></p>
+        <p class="cron-description"></p>
+      </article>
+    </template>
 
     <template id="card-template">
       <article class="card">

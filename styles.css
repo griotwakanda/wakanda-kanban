@@ -1,73 +1,151 @@
 :root {
-  --bg: #0f172a;
-  --panel: #111827;
-  --panel-2: #1f2937;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #22d3ee;
+  --bg: #f7f8ff;
+  --bg-soft: #eef2ff;
+  --panel: #ffffff;
+  --panel-2: #f8faff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --accent-soft: #e0e7ff;
   --todo: #f59e0b;
-  --progress: #38bdf8;
-  --done: #34d399;
+  --progress: #0ea5e9;
+  --done: #22c55e;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: linear-gradient(160deg, var(--bg), #020617);
+  font-family: "Inter", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(circle at top right, #dbeafe 0%, #f8fafc 42%, #f7f8ff 100%);
   color: var(--text);
   min-height: 100vh;
+  line-height: 1.45;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 1.2rem;
 }
 
 .header {
-  padding: 1.25rem 1rem 0.5rem;
+  padding: 1.6rem 1rem 0.8rem;
   text-align: center;
 }
 
-.header h1 { margin: 0; font-size: 1.8rem; }
-.header p { margin: 0.4rem 0 0; color: var(--muted); }
+.header h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+.cron-section {
+  background: color-mix(in srgb, var(--panel) 88%, #eef2ff);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cron-section h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.cron-jobs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.cron-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.85rem 0.9rem;
+}
+
+.cron-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+}
+
+.cron-schedule {
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.cron-description {
+  margin: 0;
+  color: #475569;
+  font-size: 0.86rem;
+}
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
   gap: 1rem;
-  padding: 1rem;
 }
 
 .column {
-  background: color-mix(in srgb, var(--panel) 90%, black);
-  border: 1px solid #334155;
-  border-radius: 14px;
+  background: color-mix(in srgb, var(--panel) 92%, var(--bg-soft));
+  border: 1px solid var(--border);
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
 }
 
 .column-header {
   margin: 0;
   padding: 0.85rem 1rem;
-  font-size: 1rem;
+  font-size: 0.96rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
 }
 
-.column[data-column="TODO"] .column-header { background: color-mix(in srgb, var(--todo) 25%, transparent); }
-.column[data-column="IN PROGRESS"] .column-header { background: color-mix(in srgb, var(--progress) 25%, transparent); }
-.column[data-column="DONE"] .column-header { background: color-mix(in srgb, var(--done) 25%, transparent); }
+.column[data-column="TODO"] .column-header {
+  background: color-mix(in srgb, var(--todo) 20%, #fff);
+}
+
+.column[data-column="IN PROGRESS"] .column-header {
+  background: color-mix(in srgb, var(--progress) 18%, #fff);
+}
+
+.column[data-column="DONE"] .column-header {
+  background: color-mix(in srgb, var(--done) 18%, #fff);
+}
 
 .column-body {
-  padding: 0.8rem;
+  padding: 0.9rem;
   display: grid;
-  gap: 0.8rem;
+  gap: 0.85rem;
 }
 
 .card {
-  background: var(--panel-2);
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 0.85rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem;
 }
 
 .card-title {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.35rem;
   font-size: 1rem;
 }
 
@@ -80,10 +158,12 @@ body {
 .card-tasks {
   margin: 0;
   padding-left: 1.1rem;
-  color: #cbd5e1;
+  color: #334155;
 }
 
-.card-tasks li + li { margin-top: 0.35rem; }
+.card-tasks li + li {
+  margin-top: 0.35rem;
+}
 
 .empty {
   color: var(--muted);
@@ -92,16 +172,24 @@ body {
 }
 
 .footer {
-  padding: 0 1rem 1rem;
+  padding: 0.5rem 0.2rem 0.2rem;
   text-align: right;
 }
 
 .last-updated {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   letter-spacing: 0.01em;
 }
 
-@media (max-width: 900px) {
-  .board { grid-template-columns: 1fr; }
+@media (max-width: 980px) {
+  .cron-jobs,
+  .board {
+    grid-template-columns: 1fr;
+  }
+
+  .layout {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }

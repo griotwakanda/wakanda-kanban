@@ -1,5 +1,25 @@
 {
   "updatedAt": "2026-03-02T11:19:00-08:00",
+  "cronJobs": [
+    {
+      "icon": "🦞",
+      "name": "Daily Claw",
+      "schedule": "Daily at 08:00 (America/Vancouver)",
+      "description": "1 daily suggestion (skill, technical self-improvement, or use case)."
+    },
+    {
+      "icon": "🐂",
+      "name": "Tatersal Boiadeiro Alignment",
+      "schedule": "Weekdays at 09:30",
+      "description": "concise Tatersal business alignment and next actions."
+    },
+    {
+      "icon": "📊",
+      "name": "AI Finance Analyst Midday",
+      "schedule": "Weekdays at 12:20",
+      "description": "ultra-short 5-ticker tactical market update."
+    }
+  ],
   "cards": [
     {
       "title": "House-buying",

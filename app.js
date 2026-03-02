@@ -24,7 +24,7 @@ function createColumn(name, cards, cardTemplate) {
   if (!cards.length) {
     const empty = document.createElement("p");
     empty.className = "empty";
-    empty.textContent = "No cards.";
+    empty.textContent = "No cards yet ✨";
     body.appendChild(empty);
   } else {
     cards.forEach((card) => {
@@ -47,6 +47,24 @@ function createColumn(name, cards, cardTemplate) {
   return column;
 }
 
+function renderCronJobs(cronJobs, cronTemplate) {
+  const container = document.getElementById("cron-jobs");
+  container.innerHTML = "";
+
+  if (!cronJobs?.length) {
+    container.innerHTML = '<p class="empty">No cron jobs configured.</p>';
+    return;
+  }
+
+  cronJobs.forEach((job) => {
+    const node = cronTemplate.content.firstElementChild.cloneNode(true);
+    node.querySelector(".cron-title").textContent = `${job.icon || "🧠"} ${job.name}`;
+    node.querySelector(".cron-schedule").textContent = `Schedule: ${job.schedule}`;
+    node.querySelector(".cron-description").textContent = job.description;
+    container.appendChild(node);
+  });
+}
+
 function formatTimestamp(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) return null;
@@ -67,9 +85,13 @@ function renderLastUpdated(updatedAt, fallbackDate) {
 async function init() {
   const board = document.getElementById("board");
   const cardTemplate = document.getElementById("card-template");
+  const cronTemplate = document.getElementById("cron-template");
 
   try {
     const { data, fetchedAt } = await loadBoard();
+
+    renderCronJobs(data.cronJobs, cronTemplate);
+
     COLUMNS.forEach((columnName) => {
       const cards = (data.cards || []).filter((c) => c.column === columnName);
       board.appendChild(createColumn(columnName, cards, cardTemplate));
