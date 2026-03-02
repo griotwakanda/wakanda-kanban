@@ -1,0 +1,27 @@
+{
+  "cards": [
+    {
+      "title": "House-buying",
+      "column": "IN PROGRESS",
+      "status": "Camping watch on standby and preparing to proceed with offer",
+      "pendingTasks": [
+        "Proceed with offer when target property is confirmed",
+        "Ensure offer includes subject to feasibility of a secondary suite",
+        "Coordinate Wednesday site visit with contractor Craig Beauchamp (Kootenay Carpentry)",
+        "Set up video call for site visit walkthrough"
+      ]
+    },
+    {
+      "title": "Synthia",
+      "column": "TODO",
+      "status": "Waiting on Daniel-owned prerequisites",
+      "pendingTasks": [
+        "Create Twilio account and purchase number",
+        "Share Twilio credentials securely",
+        "Confirm OpenAI API key is ready for use",
+        "Confirm Telus support number",
+        "Verify negotiation constraints for Telus conversation"
+      ]
+    }
+  ]
+}
