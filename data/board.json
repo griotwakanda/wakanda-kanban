@@ -3,7 +3,7 @@
     {
       "title": "House-buying",
       "column": "IN PROGRESS",
-      "status": "Camping watch on standby and preparing to proceed with offer",
+      "status": "Virtual tour completed; preparing to proceed with offer",
       "pendingTasks": [
         "Proceed with offer when target property is confirmed",
         "Ensure offer includes subject to feasibility of a secondary suite",
@@ -13,14 +13,24 @@
     },
     {
       "title": "Synthia",
-      "column": "TODO",
-      "status": "Waiting on Daniel-owned prerequisites",
+      "column": "IN PROGRESS",
+      "status": "MVP in progress; waiting on Daniel prerequisites for live calls",
       "pendingTasks": [
         "Create Twilio account and purchase number",
         "Share Twilio credentials securely",
         "Confirm OpenAI API key is ready for use",
         "Confirm Telus support number",
         "Verify negotiation constraints for Telus conversation"
+      ]
+    },
+    {
+      "title": "Camping watch",
+      "column": "TODO",
+      "status": "On standby",
+      "pendingTasks": [
+        "Define final watch list of campgrounds",
+        "Confirm date windows and equipment filters",
+        "Enable cron monitoring with change-only alerts"
       ]
     }
   ]
