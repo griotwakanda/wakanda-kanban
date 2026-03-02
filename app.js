@@ -47,6 +47,24 @@ function createColumn(name, cards, cardTemplate) {
   return column;
 }
 
+function renderAgents(agents, agentTemplate) {
+  const container = document.getElementById("agent-team");
+  container.innerHTML = "";
+
+  if (!agents?.length) {
+    container.innerHTML = '<p class="empty">No agents configured.</p>';
+    return;
+  }
+
+  agents.forEach((agent) => {
+    const node = agentTemplate.content.firstElementChild.cloneNode(true);
+    node.querySelector(".cron-title").textContent = `${agent.emoji || "🤖"} ${agent.name}`;
+    node.querySelector(".cron-schedule").textContent = `Role: ${agent.role}`;
+    node.querySelector(".cron-description").textContent = agent.specialization;
+    container.appendChild(node);
+  });
+}
+
 function renderCronJobs(cronJobs, cronTemplate) {
   const container = document.getElementById("cron-jobs");
   container.innerHTML = "";
@@ -85,11 +103,13 @@ function renderLastUpdated(updatedAt, fallbackDate) {
 async function init() {
   const board = document.getElementById("board");
   const cardTemplate = document.getElementById("card-template");
+  const agentTemplate = document.getElementById("agent-template");
   const cronTemplate = document.getElementById("cron-template");
 
   try {
     const { data, fetchedAt } = await loadBoard();
 
+    renderAgents(data.agents, agentTemplate);
     renderCronJobs(data.cronJobs, cronTemplate);
 
     COLUMNS.forEach((columnName) => {

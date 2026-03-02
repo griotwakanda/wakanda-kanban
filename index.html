@@ -13,6 +13,11 @@
     </header>
 
     <main class="layout">
+      <section class="cron-section" aria-labelledby="agent-team-heading">
+        <h2 id="agent-team-heading">🤖 Agent Team</h2>
+        <div id="agent-team" class="cron-jobs" aria-live="polite"></div>
+      </section>
+
       <section class="cron-section" aria-labelledby="cron-heading">
         <h2 id="cron-heading">⏰ Current Cron Jobs</h2>
         <div id="cron-jobs" class="cron-jobs" aria-live="polite"></div>
@@ -24,6 +29,14 @@
         <small id="last-updated" class="last-updated" aria-live="polite"></small>
       </footer>
     </main>
+
+    <template id="agent-template">
+      <article class="cron-card">
+        <h3 class="cron-title"></h3>
+        <p class="cron-schedule"></p>
+        <p class="cron-description"></p>
+      </article>
+    </template>
 
     <template id="cron-template">
       <article class="cron-card">
