@@ -77,7 +77,7 @@ function renderCronJobs(cronJobs, cronTemplate) {
   cronJobs.forEach((job) => {
     const node = cronTemplate.content.firstElementChild.cloneNode(true);
     node.querySelector(".cron-title").textContent = `${job.icon || "🧠"} ${job.name}`;
-    node.querySelector(".cron-schedule").textContent = `Schedule: ${job.schedule}`;
+    node.querySelector(".cron-schedule").textContent = `Schedule: ${job.schedule}${job.agent ? ` • Agent: ${job.agent}` : ""}`;
     node.querySelector(".cron-description").textContent = job.description;
     container.appendChild(node);
   });
