@@ -1,17 +1,22 @@
 :root {
-  --bg: #f7f8ff;
-  --bg-soft: #eef2ff;
-  --panel: #ffffff;
-  --panel-2: #f8faff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --accent: #4f46e5;
-  --accent-soft: #e0e7ff;
-  --todo: #f59e0b;
-  --progress: #0ea5e9;
-  --done: #22c55e;
-  --border: #e5e7eb;
-  --shadow: 0 10px 30px rgba(79, 70, 229, 0.08);
+  --bg: #f5f7ff;
+  --bg-deep: #edf2ff;
+  --surface: rgba(255, 255, 255, 0.76);
+  --surface-solid: #ffffff;
+  --surface-soft: #f8faff;
+  --text: #182131;
+  --muted: #5f6c81;
+  --border: rgba(78, 96, 139, 0.14);
+  --accent: #5b5cf0;
+  --accent-2: #11b8d9;
+  --todo: #f4a42f;
+  --progress: #1ca6d9;
+  --done: #26ba76;
+  --shadow-soft: 0 12px 28px rgba(36, 44, 72, 0.08);
+  --shadow-card: 0 8px 22px rgba(36, 44, 72, 0.07);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
 }
 
 * {
@@ -20,176 +25,269 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Avenir Next", "Segoe UI", Roboto, sans-serif;
-  background: radial-gradient(circle at top right, #dbeafe 0%, #f8fafc 42%, #f7f8ff 100%);
-  color: var(--text);
   min-height: 100vh;
-  line-height: 1.45;
+  font-family: "Inter", "Avenir Next", "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  background:
+    radial-gradient(1200px 500px at -8% -10%, rgba(91, 92, 240, 0.14), transparent 68%),
+    radial-gradient(900px 480px at 104% 4%, rgba(17, 184, 217, 0.14), transparent 62%),
+    linear-gradient(170deg, var(--bg) 0%, #f8fbff 46%, var(--bg-deep) 100%);
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(120deg, rgba(91, 92, 240, 0.22) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(17, 184, 217, 0.16) 1px, transparent 1px);
+  background-size: 34px 34px, 34px 34px;
+  mask-image: radial-gradient(circle at 25% 25%, black 0%, transparent 78%);
 }
 
 .layout {
-  max-width: 1200px;
+  width: min(1220px, 100% - 2rem);
   margin: 0 auto;
-  padding: 0 1rem 1.2rem;
+  padding: 0 0 1.8rem;
 }
 
 .header {
-  padding: 1.6rem 1rem 0.8rem;
+  padding: 2.7rem 0.2rem 1.5rem;
   text-align: center;
 }
 
 .header h1 {
   margin: 0;
-  font-size: clamp(1.8rem, 3vw, 2.3rem);
-  font-weight: 750;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .header p {
-  margin: 0.45rem 0 0;
+  margin: 0.58rem 0 0;
   color: var(--muted);
-  font-size: 0.97rem;
+  font-size: 1rem;
 }
 
 .cron-section {
-  background: color-mix(in srgb, var(--panel) 88%, #eef2ff);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.15rem;
+  padding: 1.2rem;
   border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 255, 0.84)),
+    var(--surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(6px);
+}
+
+.cron-section::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: -95px;
+  top: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91, 92, 240, 0.16), transparent 70%);
+  pointer-events: none;
 }
 
 .cron-section h2 {
-  margin: 0 0 0.8rem;
-  font-size: 1.05rem;
+  margin: 0 0 0.95rem;
+  font-size: 1.04rem;
   letter-spacing: 0.01em;
 }
 
 .cron-jobs {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .cron-card {
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(83, 101, 140, 0.16);
+  border-radius: var(--radius-md);
+  background: linear-gradient(155deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: var(--shadow-card);
+  padding: 0.95rem 1rem;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.cron-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(40, 54, 92, 0.12);
+  border-color: rgba(91, 92, 240, 0.3);
 }
 
 .cron-title {
-  margin: 0 0 0.3rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.34rem;
+  font-size: 0.96rem;
+  font-weight: 700;
 }
 
 .cron-schedule {
-  margin: 0 0 0.35rem;
-  color: var(--accent);
+  margin: 0 0 0.36rem;
+  color: color-mix(in srgb, var(--accent) 82%, #1d2f4a);
   font-size: 0.84rem;
   font-weight: 600;
 }
 
 .cron-description {
   margin: 0;
-  color: #475569;
-  font-size: 0.86rem;
+  font-size: 0.87rem;
+  color: #455470;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
   gap: 1rem;
 }
 
 .column {
-  background: color-mix(in srgb, var(--panel) 92%, var(--bg-soft));
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 252, 255, 0.92));
+  box-shadow: var(--shadow-soft);
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+  min-height: 320px;
 }
 
 .column-header {
   margin: 0;
-  padding: 0.85rem 1rem;
-  font-size: 0.96rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  padding: 0.95rem 1rem;
+  font-size: 0.93rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(70, 90, 132, 0.12);
 }
 
 .column[data-column="TODO"] .column-header {
-  background: color-mix(in srgb, var(--todo) 20%, #fff);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--todo) 26%, #fff), rgba(255, 255, 255, 0.92));
 }
 
 .column[data-column="IN PROGRESS"] .column-header {
-  background: color-mix(in srgb, var(--progress) 18%, #fff);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--progress) 22%, #fff), rgba(255, 255, 255, 0.92));
 }
 
 .column[data-column="DONE"] .column-header {
-  background: color-mix(in srgb, var(--done) 18%, #fff);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--done) 22%, #fff), rgba(255, 255, 255, 0.92));
 }
 
 .column-body {
-  padding: 0.9rem;
   display: grid;
-  gap: 0.85rem;
+  gap: 0.9rem;
+  padding: 0.95rem;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 0.9rem;
+  border: 1px solid rgba(83, 101, 140, 0.14);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 251, 255, 0.92) 100%);
+  box-shadow: var(--shadow-card);
+  padding: 0.95rem;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(91, 92, 240, 0.28);
+  box-shadow: 0 14px 30px rgba(45, 57, 95, 0.13);
 }
 
 .card-title {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.34rem;
   font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .card-status {
-  margin: 0 0 0.6rem;
-  color: var(--accent);
+  margin: 0 0 0.62rem;
+  color: color-mix(in srgb, var(--accent) 84%, #1d2f4a);
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .card-tasks {
   margin: 0;
-  padding-left: 1.1rem;
-  color: #334155;
+  padding-left: 1.05rem;
+  color: #34445f;
+  font-size: 0.92rem;
 }
 
 .card-tasks li + li {
-  margin-top: 0.35rem;
+  margin-top: 0.38rem;
 }
 
 .empty {
+  margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
-  margin: 0;
 }
 
 .footer {
-  padding: 0.5rem 0.2rem 0.2rem;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem 0.2rem 0.1rem;
 }
 
 .last-updated {
-  color: var(--muted);
+  color: #62708b;
   font-size: 0.78rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
-@media (max-width: 980px) {
-  .cron-jobs,
+@media (max-width: 1080px) {
+  .cron-jobs {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
   .board {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  body::before {
+    opacity: 0.09;
   }
 
   .layout {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    width: min(1220px, 100% - 1rem);
+  }
+
+  .header {
+    padding-top: 2rem;
+    padding-bottom: 1.1rem;
+  }
+
+  .header p {
+    font-size: 0.94rem;
+  }
+
+  .cron-section {
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .cron-jobs,
+  .board {
+    grid-template-columns: 1fr;
+    gap: 0.82rem;
+  }
+
+  .column {
+    min-height: 0;
   }
 }
