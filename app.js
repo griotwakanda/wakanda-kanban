@@ -1,9 +1,11 @@
 const COLUMNS = ["TODO", "IN PROGRESS", "DONE"];
 
 async function loadBoard() {
+  const fetchedAt = new Date();
   const res = await fetch("data/board.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`Could not load board data (${res.status})`);
-  return res.json();
+  const data = await res.json();
+  return { data, fetchedAt };
 }
 
 function createColumn(name, cards, cardTemplate) {
@@ -45,16 +47,35 @@ function createColumn(name, cards, cardTemplate) {
   return column;
 }
 
+function formatTimestamp(value) {
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+}
+
+function renderLastUpdated(updatedAt, fallbackDate) {
+  const footer = document.getElementById("last-updated");
+  const formatted = formatTimestamp(updatedAt) || formatTimestamp(fallbackDate);
+
+  footer.textContent = formatted ? `Last updated at ${formatted}` : "Last updated just now";
+}
+
 async function init() {
   const board = document.getElementById("board");
   const cardTemplate = document.getElementById("card-template");
 
   try {
-    const data = await loadBoard();
+    const { data, fetchedAt } = await loadBoard();
     COLUMNS.forEach((columnName) => {
       const cards = (data.cards || []).filter((c) => c.column === columnName);
       board.appendChild(createColumn(columnName, cards, cardTemplate));
     });
+
+    renderLastUpdated(data.updatedAt, fetchedAt);
   } catch (error) {
     board.innerHTML = `<p class="empty">${error.message}</p>`;
   }

@@ -91,6 +91,17 @@ body {
   margin: 0;
 }
 
+.footer {
+  padding: 0 1rem 1rem;
+  text-align: right;
+}
+
+.last-updated {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
 @media (max-width: 900px) {
   .board { grid-template-columns: 1fr; }
 }
