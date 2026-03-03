@@ -83,6 +83,25 @@ function renderCronJobs(cronJobs, cronTemplate) {
   });
 }
 
+function renderRepositories(repositories, repoTemplate) {
+  const container = document.getElementById("repositories");
+  container.innerHTML = "";
+
+  if (!repositories?.length) {
+    container.innerHTML = '<p class="empty">No repositories configured.</p>';
+    return;
+  }
+
+  repositories.forEach((repo) => {
+    const node = repoTemplate.content.firstElementChild.cloneNode(true);
+    node.href = repo.url;
+    node.querySelector(".cron-title").textContent = `📦 ${repo.name}`;
+    node.querySelector(".cron-schedule").textContent = repo.status ? `Status: ${repo.status}` : "GitHub repository";
+    node.querySelector(".cron-description").textContent = repo.description;
+    container.appendChild(node);
+  });
+}
+
 function formatTimestamp(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) return null;
@@ -105,12 +124,14 @@ async function init() {
   const cardTemplate = document.getElementById("card-template");
   const agentTemplate = document.getElementById("agent-template");
   const cronTemplate = document.getElementById("cron-template");
+  const repoTemplate = document.getElementById("repo-template");
 
   try {
     const { data, fetchedAt } = await loadBoard();
 
     renderAgents(data.agents, agentTemplate);
     renderCronJobs(data.cronJobs, cronTemplate);
+    renderRepositories(data.repositories, repoTemplate);
 
     COLUMNS.forEach((columnName) => {
       const cards = (data.cards || []).filter((c) => c.column === columnName);

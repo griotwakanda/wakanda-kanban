@@ -121,6 +121,20 @@ body::before {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.repos-grid {
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+}
+
+.repo-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.repo-card .cron-title {
+  color: #1d2b42;
+}
+
 .cron-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 26px rgba(40, 54, 92, 0.12);
@@ -251,6 +265,10 @@ body::before {
 @media (max-width: 1080px) {
   .cron-jobs {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+
+  .repos-grid {
+    grid-template-columns: repeat(3, minmax(210px, 1fr));
   }
 
   .board {

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-02T11:54:00-08:00",
+  "updatedAt": "2026-03-03T08:41:00-08:00",
   "agents": [
     {
       "name": "Griot",
@@ -41,6 +41,56 @@
       "schedule": "Weekdays at 12:20",
       "agent": "Griot",
       "description": "ultra-short 5-ticker tactical market update."
+    }
+  ],
+  "repositories": [
+    {
+      "name": "wakanda-kanban",
+      "url": "https://github.com/tatersal/wakanda-kanban",
+      "description": "Static status board for projects, agents, cron jobs, and delivery tracking.",
+      "status": "Active"
+    },
+    {
+      "name": "synthia-mission-control-negotiator",
+      "url": "https://github.com/tatersal/synthia-mission-control-negotiator",
+      "description": "Mission-control workflow for Synthia negotiation runs, call orchestration, and monitoring.",
+      "status": "In progress"
+    },
+    {
+      "name": "tatersal-digital-ws",
+      "url": "https://github.com/tatersal/tatersal-digital-ws",
+      "description": "Core Tatersal Digital website codebase and foundational web stack.",
+      "status": "Active"
+    },
+    {
+      "name": "tatersal-digital-ws-2",
+      "url": "https://github.com/tatersal/tatersal-digital-ws-2",
+      "description": "Second-iteration workspace for faster design/prototype experiments and launch updates.",
+      "status": "Experimental"
+    },
+    {
+      "name": "firetv-mood-wall",
+      "url": "https://github.com/tatersal/firetv-mood-wall",
+      "description": "Ambient Fire TV visual wall with mood-driven themes and display scenes.",
+      "status": "Active"
+    },
+    {
+      "name": "grocery-dashboard",
+      "url": "https://github.com/tatersal/grocery-dashboard",
+      "description": "Household grocery tracking dashboard for planning, lists, and quick inventory visibility.",
+      "status": "Planned"
+    },
+    {
+      "name": "tatersal-digital-showcase",
+      "url": "https://github.com/tatersal/tatersal-digital-showcase",
+      "description": "Public-facing portfolio/showcase for Tatersal Digital projects and case studies.",
+      "status": "Active"
+    },
+    {
+      "name": "griot-mission-control",
+      "url": "https://github.com/tatersal/griot-mission-control",
+      "description": "Griot orchestration hub; include when repo is available and keep this card as a visibility note.",
+      "status": "If available"
     }
   ],
   "cards": [

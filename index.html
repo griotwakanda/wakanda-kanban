@@ -23,6 +23,11 @@
         <div id="cron-jobs" class="cron-jobs" aria-live="polite"></div>
       </section>
 
+      <section class="cron-section" aria-labelledby="repos-heading">
+        <h2 id="repos-heading">📚 GitHub Repositories</h2>
+        <div id="repositories" class="cron-jobs repos-grid" aria-live="polite"></div>
+      </section>
+
       <div id="board" class="board" aria-live="polite"></div>
 
       <footer class="footer">
@@ -44,6 +49,14 @@
         <p class="cron-schedule"></p>
         <p class="cron-description"></p>
       </article>
+    </template>
+
+    <template id="repo-template">
+      <a class="cron-card repo-card" target="_blank" rel="noopener noreferrer">
+        <h3 class="cron-title"></h3>
+        <p class="cron-schedule"></p>
+        <p class="cron-description"></p>
+      </a>
     </template>
 
     <template id="card-template">
