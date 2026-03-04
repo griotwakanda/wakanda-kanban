@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-03T08:41:00-08:00",
+  "updatedAt": "2026-03-04T08:41:00-08:00",
   "agents": [
     {
       "name": "Griot",
@@ -31,16 +31,16 @@
     {
       "icon": "🐂",
       "name": "Tatersal Boiadeiro Alignment",
-      "schedule": "Weekdays at 09:30",
+      "schedule": "Weekdays at 09:30 (paused per Daniel's request)",
       "agent": "Boiadeiro",
-      "description": "concise Tatersal business alignment and next actions."
+      "description": "Concise Tatersal business alignment and next actions. Currently paused until we get the green light."
     },
     {
       "icon": "📊",
       "name": "AI Finance Analyst Midday",
-      "schedule": "Weekdays at 12:20",
+      "schedule": "Weekdays at 12:20 (paused per Daniel's request)",
       "agent": "Griot",
-      "description": "ultra-short 5-ticker tactical market update."
+      "description": "Ultra-short 5-ticker tactical market update. Paused for now; will resume when instructed."
     }
   ],
   "repositories": [
