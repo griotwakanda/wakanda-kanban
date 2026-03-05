@@ -1,72 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wakanda Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wakanda Mission Control</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="header">
-      <h1>✨ Wakanda Board</h1>
-      <p>High-level project board for Daniel</p>
-    </header>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Tatersal Digital</p>
+          <h1>Wakanda Mission Control</h1>
+          <p class="subtitle">Unified visibility for agents, cron rhythm, repositories, and live delivery decks.</p>
+        </div>
+        <div class="header-meta">
+          <p id="last-updated">Last updated just now</p>
+          <button class="ghost-btn" id="refresh-btn">Refresh</button>
+        </div>
+      </header>
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="sidebar-brand">
+            <strong>Mission Control</strong>
+            <span>Dark theme · blue accents</span>
+          </div>
+          <nav>
+            <a href="#mission">Overview</a>
+            <a href="#agents">Agents</a>
+            <a href="#cron">Cron rhythm</a>
+            <a href="#repos">Repositories</a>
+            <a href="#board">Kanban</a>
+          </nav>
+          <div class="sidebar-footer">
+            <p>More sections coming soon.</p>
+          </div>
+        </aside>
+        <main class="content">
+          <section class="section" id="mission">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Overview</p>
+                <h2>Command summary</h2>
+              </div>
+              <p class="section-note">Live data refreshes as the teams move and the cron wheel turns.</p>
+            </div>
+            <div id="stats-grid" class="stats-grid"></div>
+          </section>
 
-    <main class="layout">
-      <section class="cron-section" aria-labelledby="agent-team-heading">
-        <h2 id="agent-team-heading">🤖 Agent Team</h2>
-        <div id="agent-team" class="cron-jobs" aria-live="polite"></div>
-      </section>
+          <section class="section" id="agents">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Agents</p>
+                <h2>Team crew</h2>
+              </div>
+              <p class="section-note">Roles, specialties, and current focus.</p>
+            </div>
+            <div id="agent-team" class="card-grid"></div>
+          </section>
 
-      <section class="cron-section" aria-labelledby="cron-heading">
-        <h2 id="cron-heading">⏰ Current Cron Jobs</h2>
-        <div id="cron-jobs" class="cron-jobs" aria-live="polite"></div>
-      </section>
+          <section class="section" id="cron">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Cron rhythm</p>
+                <h2>Scheduled pulses</h2>
+              </div>
+              <p class="section-note">What runs when and who owns it.</p>
+            </div>
+            <div id="cron-jobs" class="card-grid"></div>
+          </section>
 
-      <section class="cron-section" aria-labelledby="repos-heading">
-        <h2 id="repos-heading">📚 GitHub Repositories</h2>
-        <div id="repositories" class="cron-jobs repos-grid" aria-live="polite"></div>
-      </section>
+          <section class="section" id="repos">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Repositories</p>
+                <h2>Code & playbooks</h2>
+              </div>
+              <p class="section-note">Sources powering Wakanda Mission Control.</p>
+            </div>
+            <div id="repositories" class="card-grid"></div>
+          </section>
 
-      <div id="board" class="board" aria-live="polite"></div>
+          <section class="section" id="board">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Kanban board</p>
+                <h2>Live workstream</h2>
+              </div>
+              <p class="section-note">Active cards organized by status.</p>
+            </div>
+            <div id="board-columns" class="board-grid"></div>
+          </section>
+        </main>
+      </div>
+    </div>
 
-      <footer class="footer">
-        <small id="last-updated" class="last-updated" aria-live="polite"></small>
-      </footer>
-    </main>
+    <template id="stat-template">
+      <article class="stat-card">
+        <h3 class="stat-value"></h3>
+        <p class="stat-label"></p>
+      </article>
+    </template>
 
     <template id="agent-template">
-      <article class="cron-card">
-        <h3 class="cron-title"></h3>
-        <p class="cron-schedule"></p>
-        <p class="cron-description"></p>
+      <article class="info-card">
+        <p class="card-emoji"></p>
+        <div>
+          <h3 class="card-title"></h3>
+          <p class="card-subtitle"></p>
+          <p class="card-description"></p>
+        </div>
       </article>
     </template>
 
     <template id="cron-template">
-      <article class="cron-card">
-        <h3 class="cron-title"></h3>
-        <p class="cron-schedule"></p>
-        <p class="cron-description"></p>
+      <article class="info-card">
+        <p class="card-emoji">⏰</p>
+        <div>
+          <h3 class="card-title"></h3>
+          <p class="card-subtitle"></p>
+          <p class="card-description"></p>
+        </div>
       </article>
     </template>
 
     <template id="repo-template">
-      <a class="cron-card repo-card" target="_blank" rel="noopener noreferrer">
-        <h3 class="cron-title"></h3>
-        <p class="cron-schedule"></p>
-        <p class="cron-description"></p>
+      <a class="repo-card" target="_blank" rel="noopener noreferrer">
+        <h3 class="card-title"></h3>
+        <p class="card-subtitle"></p>
+        <p class="card-description"></p>
       </a>
     </template>
 
-    <template id="card-template">
-      <article class="card">
-        <h3 class="card-title"></h3>
-        <p class="card-status"></p>
-        <ul class="card-tasks"></ul>
+    <template id="column-template">
+      <article class="kanban-column">
+        <header>
+          <h3 class="column-name"></h3>
+          <span class="column-count"></span>
+        </header>
+        <p class="column-description"></p>
+        <ul class="column-tasks"></ul>
       </article>
     </template>
 
-    <script src="app.js" defer></script>
+    <script src="app.js" type="module"></script>
   </body>
 </html>
