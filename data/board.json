@@ -26,21 +26,33 @@
       "name": "Daily Claw",
       "schedule": "Daily at 08:00 (America/Vancouver)",
       "agent": "Griot",
-      "description": "1 daily suggestion (skill, technical self-improvement, or use case)."
+      "description": "1 daily suggestion (skill, technical self-improvement, or use case).",
+      "state": "Active"
     },
     {
       "icon": "🐂",
       "name": "Tatersal Boiadeiro Alignment",
-      "schedule": "Weekdays at 09:30 (paused per Daniel's request)",
+      "schedule": "Weekdays at 09:30",
       "agent": "Boiadeiro",
-      "description": "Concise Tatersal business alignment and next actions. Currently paused until we get the green light."
+      "description": "Concise Tatersal business alignment and next actions.",
+      "state": "Paused"
     },
     {
       "icon": "📊",
       "name": "AI Finance Analyst Midday",
-      "schedule": "Weekdays at 12:20 (paused per Daniel's request)",
+      "schedule": "Weekdays at 12:20",
       "agent": "Griot",
-      "description": "Ultra-short 5-ticker tactical market update. Paused for now; will resume when instructed."
+      "description": "Ultra-short 5-ticker tactical market update.",
+      "state": "Paused"
+    },
+    {
+      "icon": "🐮",
+      "name": "Boi Gordo · São Luís de Montes Belos",
+      "schedule": "Daily at 13:00",
+      "agent": "Boiadeiro",
+      "description": "WhatsApp-style price update using CEPEA/Notícias Agrícolas data.",
+      "state": "Active",
+      "tag": "New"
     }
   ],
   "repositories": [

@@ -63,8 +63,25 @@ function renderCronJobs(cronJobs, template) {
 
   cronJobs.forEach((job) => {
     const node = template.content.firstElementChild.cloneNode(true);
+    const state = (job.state || 'Active').trim();
+    const isActive = state.toLowerCase() === 'active';
+
+    node.querySelector('.card-emoji').textContent = job.icon || '⏰';
     node.querySelector('.card-title').textContent = job.name;
     node.querySelector('.card-subtitle').textContent = `Schedule: ${job.schedule?.schedule ?? job.schedule}`;
+
+    const statusBadge = node.querySelector('.status-badge');
+    statusBadge.textContent = state;
+    statusBadge.classList.toggle('status-muted', !isActive);
+
+    const tagBadge = node.querySelector('.tag-badge');
+    if (job.tag) {
+      tagBadge.textContent = job.tag;
+      tagBadge.hidden = false;
+    } else {
+      tagBadge.hidden = true;
+    }
+
     node.querySelector('.card-description').textContent = job.description;
     container.appendChild(node);
   });
