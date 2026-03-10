@@ -134,6 +134,8 @@ function renderRepositories(repositories, template) {
 
 function createColumn(columnName, cards, template) {
   const node = template.content.firstElementChild.cloneNode(true);
+  node.dataset.column = columnName;
+  node.classList.add(`column-${columnName.toLowerCase().replace(/\s+/g, '-')}`);
   node.querySelector('.column-name').textContent = columnName;
   node.querySelector('.column-count').textContent = `${cards.length} card${cards.length === 1 ? '' : 's'}`;
   node.querySelector('.column-description').textContent = COLUMN_META[columnName] || '';
@@ -151,9 +153,11 @@ function createColumn(columnName, cards, template) {
 function renderKanban(cards, template) {
   const container = document.getElementById('board-columns');
   container.innerHTML = '';
-  COLUMNS.forEach((columnName) => {
+  COLUMNS.forEach((columnName, index) => {
     const columnCards = (cards || []).filter((card) => card.column === columnName);
-    container.appendChild(createColumn(columnName, columnCards, template));
+    const columnNode = createColumn(columnName, columnCards, template);
+    columnNode.style.animationDelay = `${index * 80}ms`;
+    container.appendChild(columnNode);
   });
 }
 
