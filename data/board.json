@@ -1,23 +1,11 @@
 {
-  "updatedAt": "2026-03-04T08:41:00-08:00",
+  "updatedAt": "2026-03-10T16:52:00-07:00",
   "agents": [
     {
       "name": "Griot",
       "role": "Main Agent",
-      "specialization": "Orchestrates priorities, user communication, delegation and quality supervision.",
+      "specialization": "Unified operator across Telegram + webchat, orchestrating delivery, automations, and execution cadence.",
       "emoji": "🤖"
-    },
-    {
-      "name": "Jimmy",
-      "role": "Coding Agent",
-      "specialization": "Software implementation, automations, UI, deploys, technical maintenance.",
-      "emoji": "🛠️"
-    },
-    {
-      "name": "Boiadeiro",
-      "role": "Business/Ops Agent",
-      "specialization": "Tatersal non-technical strategy: commercial, pricing, operations, execution diagnostics.",
-      "emoji": "🐂"
     }
   ],
   "cronJobs": [
@@ -26,117 +14,99 @@
       "name": "Daily Claw",
       "schedule": "Daily at 08:00 (America/Vancouver)",
       "agent": "Griot",
-      "description": "1 daily suggestion (skill, technical self-improvement, or use case).",
-      "state": "Active"
-    },
-    {
-      "icon": "🐂",
-      "name": "Tatersal Boiadeiro Alignment",
-      "schedule": "Weekdays at 09:30",
-      "agent": "Boiadeiro",
-      "description": "Concise Tatersal business alignment and next actions.",
-      "state": "Paused"
-    },
-    {
-      "icon": "📊",
-      "name": "AI Finance Analyst Midday",
-      "schedule": "Weekdays at 12:20",
-      "agent": "Griot",
-      "description": "Ultra-short 5-ticker tactical market update.",
-      "state": "Paused"
-    },
-    {
-      "icon": "🐮",
-      "name": "Boi Gordo · São Luís de Montes Belos",
-      "schedule": "Daily at 13:00",
-      "agent": "Boiadeiro",
-      "description": "WhatsApp-style price update using CEPEA/Notícias Agrícolas data.",
+      "description": "Delivers one concise daily leverage item in fixed 4-line format.",
       "state": "Active",
-      "tag": "New"
+      "tag": "Telegram delivery"
+    },
+    {
+      "icon": "🐄",
+      "name": "Boi Gordo - São Luís de Montes Belos",
+      "schedule": "Daily at 13:00 (America/Vancouver)",
+      "agent": "Boiadeiro persona (cron session)",
+      "description": "Daily market bulletin with CEPEA/ESALQ + Goiás context, WhatsApp-ready format.",
+      "state": "Active",
+      "tag": "Market intel"
     }
   ],
   "repositories": [
     {
       "name": "wakanda-kanban",
       "url": "https://github.com/griotwakanda/wakanda-kanban",
-      "description": "Static status board for projects, agents, cron jobs, and delivery tracking.",
-      "status": "Active"
-    },
-    {
-      "name": "synthia-mission-control-negotiator",
-      "url": "https://github.com/griotwakanda/synthia-mission-control-negotiator",
-      "description": "Mission-control workflow for Synthia negotiation runs, call orchestration, and monitoring.",
-      "status": "In progress"
-    },
-    {
-      "name": "tatersal-digital-ws",
-      "url": "https://github.com/griotwakanda/tatersal-digital-ws",
-      "description": "Core Tatersal Digital website codebase and foundational web stack.",
-      "status": "Active"
-    },
-    {
-      "name": "tatersal-digital-ws-2",
-      "url": "https://github.com/griotwakanda/tatersal-digital-ws-2",
-      "description": "Second-iteration workspace for faster design/prototype experiments and launch updates.",
-      "status": "Experimental"
-    },
-    {
-      "name": "firetv-mood-wall",
-      "url": "https://github.com/griotwakanda/firetv-mood-wall",
-      "description": "Ambient Fire TV visual wall with mood-driven themes and display scenes.",
-      "status": "Active"
-    },
-    {
-      "name": "grocery-dashboard",
-      "url": "https://github.com/griotwakanda/grocery-dashboard",
-      "description": "Household grocery tracking dashboard for planning, lists, and quick inventory visibility.",
-      "status": "Planned"
-    },
-    {
-      "name": "tatersal-digital-showcase",
-      "url": "https://github.com/griotwakanda/tatersal-digital-showcase",
-      "description": "Public-facing portfolio/showcase for Tatersal Digital projects and case studies.",
+      "description": "Mission board and operational cockpit published on GitHub Pages.",
       "status": "Active"
     },
     {
       "name": "griot-mission-control",
       "url": "https://github.com/griotwakanda/griot-mission-control",
-      "description": "Griot orchestration hub; include when repo is available and keep this card as a visibility note.",
-      "status": "If available"
+      "description": "Core mission-control workspace and operator dashboard layer.",
+      "status": "Active"
+    },
+    {
+      "name": "tatersal-digital-showcase",
+      "url": "https://github.com/griotwakanda/tatersal-digital-showcase",
+      "description": "Public-facing showcase for Tatersal Digital narrative and demos.",
+      "status": "Active"
+    },
+    {
+      "name": "tatersal-digital-ws",
+      "url": "https://github.com/griotwakanda/tatersal-digital-ws",
+      "description": "Primary web stack for Tatersal Digital product presence.",
+      "status": "Active"
+    },
+    {
+      "name": "tatersal-digital-ws-2",
+      "url": "https://github.com/griotwakanda/tatersal-digital-ws-2",
+      "description": "Iteration workspace for faster UI/prototype experiments.",
+      "status": "Experimental"
+    },
+    {
+      "name": "tatersal-voice-attendant-poc",
+      "url": "https://github.com/griotwakanda/tatersal-voice-attendant-poc",
+      "description": "Voice-assistant proof of concept for auction support workflows.",
+      "status": "In progress"
+    },
+    {
+      "name": "grocery-dashboard",
+      "url": "https://github.com/griotwakanda/grocery-dashboard",
+      "description": "Household grocery planning dashboard and trend tracking.",
+      "status": "Active"
     }
   ],
   "cards": [
     {
-      "title": "House-buying",
-      "column": "IN PROGRESS",
-      "status": "Virtual tour completed; preparing to proceed with offer",
+      "title": "Mission board Gemini refresh",
+      "column": "DONE",
+      "status": "Published with dark Gemini-inspired visual overhaul",
       "pendingTasks": [
-        "Proceed with offer when target property is confirmed",
-        "Ensure offer includes subject to feasibility of a secondary suite",
-        "Coordinate Wednesday site visit with contractor Craig Beauchamp (Kootenay Carpentry)",
-        "Set up video call for site visit walkthrough"
+        "Collect feedback from Daniel",
+        "Apply micro-interaction pass if requested"
       ]
     },
     {
-      "title": "Synthia",
+      "title": "Cron reliability hardening",
       "column": "IN PROGRESS",
-      "status": "MVP in progress; waiting on Daniel prerequisites for live calls",
+      "status": "Gateway/signature instability improved, keep monitoring",
       "pendingTasks": [
-        "Create Twilio account and purchase number",
-        "Share Twilio credentials securely",
-        "Confirm OpenAI API key is ready for use",
-        "Confirm Telus support number",
-        "Verify negotiation constraints for Telus conversation"
+        "Watch next 48h cron runs for consistency",
+        "Escalate only if delivery failures reappear"
       ]
     },
     {
-      "title": "Camping watch",
+      "title": "Tatersal Digital execution",
+      "column": "IN PROGRESS",
+      "status": "Context unified across channels; continue product momentum",
+      "pendingTasks": [
+        "Refine product priorities for next sprint",
+        "Convert business asks into ship-ready tasks"
+      ]
+    },
+    {
+      "title": "Data freshness routine",
       "column": "TODO",
-      "status": "On standby",
+      "status": "Need automated board-data sync",
       "pendingTasks": [
-        "Define final watch list of campgrounds",
-        "Confirm date windows and equipment filters",
-        "Enable cron monitoring with change-only alerts"
+        "Create script to pull agents/cron/repo info",
+        "Schedule board.json refresh weekly"
       ]
     }
   ]

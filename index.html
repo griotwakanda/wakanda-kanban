@@ -3,133 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wakanda Mission Control</title>
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Wakanda Mission Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+
     <div class="app-shell">
       <header class="app-header">
         <div>
-          <h1>Wakanda Mission Control</h1>
-          <p class="subtitle">Unified visibility for agents, cron rhythm, repositories, and live delivery decks.</p>
+          <p class="eyebrow">Wakanda Board</p>
+          <h1>Mission Intelligence</h1>
+          <p class="subtitle">Gemini-style dark cockpit with live execution context for agents, cron cadence, repos, and active work.</p>
         </div>
         <div class="header-meta">
           <p id="last-updated">Last updated just now</p>
-          <button class="ghost-btn" id="refresh-btn">Refresh</button>
+          <button class="ghost-btn" id="refresh-btn">Refresh data</button>
         </div>
       </header>
-      <div class="layout">
-        <aside class="sidebar">
-          <div class="sidebar-brand">
-            <strong>Mission Control</strong>
-            <span>Dark theme · blue accents</span>
+
+      <main class="content">
+        <section class="panel mission-panel" id="mission">
+          <div class="panel-head">
+            <h2>Mission pulse</h2>
+            <span class="chip">Live</span>
           </div>
-          <nav>
-            <a href="#mission">Overview</a>
-            <a href="#agents">Agents</a>
-            <a href="#cron">Cron rhythm</a>
-            <a href="#repos">Repositories</a>
-            <a href="#board">Kanban</a>
-          </nav>
-          <div class="sidebar-footer">
-            <p>More sections coming soon.</p>
+          <div class="mission-grid">
+            <article class="mission-hero">
+              <p class="mission-kicker">Operator Mode</p>
+              <h3 id="mission-headline">Loading mission status…</h3>
+              <p id="mission-summary">Preparing board diagnostics…</p>
+              <div class="progress-track">
+                <div id="mission-progress-bar" class="progress-fill"></div>
+              </div>
+              <p id="mission-progress-label" class="progress-label">Momentum score loading…</p>
+            </article>
+            <article class="metric-card">
+              <p>Active cron</p>
+              <strong id="mini-active-cron">0</strong>
+            </article>
+            <article class="metric-card">
+              <p>In progress</p>
+              <strong id="mini-in-progress">0</strong>
+            </article>
+            <article class="metric-card">
+              <p>Done lane</p>
+              <strong id="mini-done">0</strong>
+            </article>
           </div>
-        </aside>
-        <main class="content">
-          <section class="section mission-section" id="mission">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Overview</p>
-                <h2>Mission cockpit</h2>
-              </div>
-              <p class="section-note">Live pulse of execution velocity, delivery rhythm, and board traction.</p>
-            </div>
-            <div class="mission-spotlight">
-              <div class="mission-core">
-                <p class="mission-kicker">WAKANDA OPERATOR MODE</p>
-                <h3 id="mission-headline">All systems aligned for execution</h3>
-                <p id="mission-summary">Agents, cron rhythm, repositories, and cards are synchronized.</p>
-                <div class="mission-progress-wrap">
-                  <div id="mission-progress-bar" class="mission-progress-bar"></div>
-                </div>
-                <p id="mission-progress-label" class="mission-progress-label">Momentum score loading…</p>
-              </div>
-              <div class="mission-sidecards">
-                <article class="mini-card">
-                  <p class="mini-label">Active cron</p>
-                  <p id="mini-active-cron" class="mini-value">0</p>
-                </article>
-                <article class="mini-card">
-                  <p class="mini-label">Work in progress</p>
-                  <p id="mini-in-progress" class="mini-value">0</p>
-                </article>
-                <article class="mini-card">
-                  <p class="mini-label">Delivery ready</p>
-                  <p id="mini-done" class="mini-value">0</p>
-                </article>
-              </div>
-            </div>
-            <div id="stats-grid" class="stats-grid"></div>
-          </section>
+          <div id="stats-grid" class="stats-grid"></div>
+        </section>
 
-          <section class="section" id="agents">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Agents</p>
-                <h2>Team crew</h2>
-              </div>
-              <p class="section-note">Roles, specialties, and current focus.</p>
-            </div>
-            <div id="agent-team" class="card-grid"></div>
-          </section>
+        <section class="panel" id="agents">
+          <div class="panel-head">
+            <h2>Agents</h2>
+          </div>
+          <div id="agent-team" class="card-grid"></div>
+        </section>
 
-          <section class="section" id="cron">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Cron rhythm</p>
-                <h2>Scheduled pulses</h2>
-              </div>
-              <p class="section-note">What runs when and who owns it.</p>
-            </div>
-            <div id="cron-jobs" class="card-grid"></div>
-          </section>
+        <section class="panel" id="cron">
+          <div class="panel-head">
+            <h2>Cron cadence</h2>
+          </div>
+          <div id="cron-jobs" class="card-grid"></div>
+        </section>
 
-          <section class="section" id="repos">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Repositories</p>
-                <h2>Code & playbooks</h2>
-              </div>
-              <p class="section-note">Sources powering Wakanda Mission Control.</p>
-            </div>
-            <div id="repositories" class="card-grid"></div>
-          </section>
+        <section class="panel" id="repos">
+          <div class="panel-head">
+            <h2>Repositories</h2>
+          </div>
+          <div id="repositories" class="card-grid"></div>
+        </section>
 
-          <section class="section" id="board">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Kanban board</p>
-                <h2>Live workstream</h2>
-              </div>
-              <p class="section-note">Active cards organized by status.</p>
-            </div>
-            <div id="board-columns" class="board-grid"></div>
-          </section>
-        </main>
-      </div>
+        <section class="panel" id="board">
+          <div class="panel-head">
+            <h2>Kanban lanes</h2>
+          </div>
+          <div id="board-columns" class="board-grid"></div>
+        </section>
+      </main>
     </div>
 
     <template id="stat-template">
