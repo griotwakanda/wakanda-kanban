@@ -19,6 +19,33 @@ function createStatCard(statTemplate, value, label) {
   return node;
 }
 
+function renderMissionSpotlight(data) {
+  const cards = data.cards || [];
+  const cronJobs = data.cronJobs || [];
+  const inProgress = cards.filter((card) => card.column === 'IN PROGRESS').length;
+  const done = cards.filter((card) => card.column === 'DONE').length;
+  const activeCron = cronJobs.filter((job) => (job.state || '').toLowerCase() === 'active').length;
+
+  const score = Math.max(5, Math.min(100, Math.round(((activeCron * 30) + (inProgress * 20) + (done * 15) + ((data.agents?.length || 0) * 10)) / 1.2)));
+
+  const missionHeadline = document.getElementById('mission-headline');
+  const missionSummary = document.getElementById('mission-summary');
+  const progressBar = document.getElementById('mission-progress-bar');
+  const progressLabel = document.getElementById('mission-progress-label');
+
+  if (missionHeadline) missionHeadline.textContent = score >= 75 ? 'Execution engine running strong' : 'Mission systems warming up';
+  if (missionSummary) missionSummary.textContent = `${activeCron} active cron pulse(s), ${inProgress} stream(s) in progress, ${done} completed lane(s).`;
+  if (progressBar) progressBar.style.width = `${score}%`;
+  if (progressLabel) progressLabel.textContent = `Momentum score: ${score}/100`;
+
+  const miniActiveCron = document.getElementById('mini-active-cron');
+  const miniInProgress = document.getElementById('mini-in-progress');
+  const miniDone = document.getElementById('mini-done');
+  if (miniActiveCron) miniActiveCron.textContent = String(activeCron);
+  if (miniInProgress) miniInProgress.textContent = String(inProgress);
+  if (miniDone) miniDone.textContent = String(done);
+}
+
 function renderStats(data, statTemplate) {
   const container = document.getElementById('stats-grid');
   container.innerHTML = '';
@@ -156,6 +183,7 @@ async function init() {
   const loadAndRender = async () => {
     try {
       const { data, fetchedAt } = await loadBoard();
+      renderMissionSpotlight(data);
       renderStats(data, statTemplate);
       renderAgents(data.agents, agentTemplate);
       renderCronJobs(data.cronJobs, cronTemplate);

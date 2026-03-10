@@ -49,13 +49,38 @@
           </div>
         </aside>
         <main class="content">
-          <section class="section" id="mission">
+          <section class="section mission-section" id="mission">
             <div class="section-head">
               <div>
                 <p class="eyebrow">Overview</p>
-                <h2>Command summary</h2>
+                <h2>Mission cockpit</h2>
               </div>
-              <p class="section-note">Live data refreshes as the teams move and the cron wheel turns.</p>
+              <p class="section-note">Live pulse of execution velocity, delivery rhythm, and board traction.</p>
+            </div>
+            <div class="mission-spotlight">
+              <div class="mission-core">
+                <p class="mission-kicker">WAKANDA OPERATOR MODE</p>
+                <h3 id="mission-headline">All systems aligned for execution</h3>
+                <p id="mission-summary">Agents, cron rhythm, repositories, and cards are synchronized.</p>
+                <div class="mission-progress-wrap">
+                  <div id="mission-progress-bar" class="mission-progress-bar"></div>
+                </div>
+                <p id="mission-progress-label" class="mission-progress-label">Momentum score loading…</p>
+              </div>
+              <div class="mission-sidecards">
+                <article class="mini-card">
+                  <p class="mini-label">Active cron</p>
+                  <p id="mini-active-cron" class="mini-value">0</p>
+                </article>
+                <article class="mini-card">
+                  <p class="mini-label">Work in progress</p>
+                  <p id="mini-in-progress" class="mini-value">0</p>
+                </article>
+                <article class="mini-card">
+                  <p class="mini-label">Delivery ready</p>
+                  <p id="mini-done" class="mini-value">0</p>
+                </article>
+              </div>
             </div>
             <div id="stats-grid" class="stats-grid"></div>
           </section>
