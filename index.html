@@ -3,73 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wakanda AI Command</title>
+    <title>Wakanda Assist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="bg-glow glow-a"></div>
-    <div class="bg-glow glow-b"></div>
+    <div class="wallpaper"></div>
+    <main class="phone">
+      <header class="top">
+        <button class="icon-btn">◦◦◦</button>
+        <button id="refresh-btn" class="icon-btn">⟳</button>
+      </header>
 
-    <header class="top">
-      <div>
-        <p class="brand">OpenClaw · Wakanda</p>
-        <h1>AI Mission Command</h1>
-      </div>
-      <button id="refresh-btn" class="btn">Refresh</button>
-    </header>
-
-    <main class="app">
       <section class="hero">
-        <p class="hero-kicker">Live execution state</p>
-        <h2 id="headline">Loading mission pulse…</h2>
-        <p id="summary">Reading board data.</p>
-
-        <div class="hero-row">
-          <div class="progress-wrap">
-            <div id="progress" class="progress"></div>
-          </div>
-          <p id="score" class="score">0 / 100</p>
-        </div>
-
-        <p id="last-updated" class="updated">Updated just now</p>
+        <h1 id="headline">Welcome!<br/>How can I help<br/>you today?</h1>
+        <p id="summary">Loading…</p>
       </section>
 
-      <section class="strip" id="metrics"></section>
+      <section class="quick-grid" id="metrics"></section>
 
-      <section class="panel">
-        <div class="panel-head">
-          <h3>Ops</h3>
-          <span id="agents-count"></span>
+      <section class="section">
+        <div class="section-head">
+          <h2>Recent Ops</h2>
+          <span id="last-updated">now</span>
         </div>
-        <div id="agents-list" class="list"></div>
+        <div id="ops-list" class="list"></div>
       </section>
 
-      <section class="panel">
-        <div class="panel-head">
-          <h3>Cron Rhythm</h3>
-          <span id="cron-count"></span>
+      <section class="section">
+        <div class="section-head">
+          <h2>Repositories</h2>
+          <span id="repos-count">0</span>
         </div>
-        <div id="cron-list" class="list"></div>
+        <div id="repos" class="list"></div>
       </section>
 
-      <section class="panel">
-        <div class="panel-head">
-          <h3>Current Pipeline</h3>
-          <span id="cards-count"></span>
-        </div>
-        <div id="pipeline" class="list"></div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-head">
-          <h3>Repositories</h3>
-          <span id="repos-count"></span>
-        </div>
-        <div id="repos" class="repos"></div>
-      </section>
+      <footer class="composer">
+        <span>Message</span>
+        <span>🎤</span>
+      </footer>
     </main>
 
     <script src="app.js" defer></script>
