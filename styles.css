@@ -1,11 +1,13 @@
 :root {
   color-scheme: dark;
-  --bg: oklch(0.16 0.02 255);
-  --surface: oklch(0.2 0.02 255);
-  --line: oklch(0.32 0.03 255);
-  --text: oklch(0.96 0.01 255);
-  --muted: oklch(0.75 0.02 255);
-  --accent: oklch(0.75 0.13 250);
+  --bg: oklch(0.16 0.02 150);
+  --surface: oklch(0.2 0.02 150);
+  --line: oklch(0.34 0.03 150);
+  --text: oklch(0.96 0.01 140);
+  --muted: oklch(0.76 0.02 145);
+  --green: oklch(0.8 0.16 150);
+  --green-soft: oklch(0.7 0.12 155);
+  --gold: oklch(0.86 0.13 95);
 }
 
 * { box-sizing: border-box; }
@@ -14,7 +16,8 @@ body {
   font-family: Inter, system-ui, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(80vw 40vh at 90% -10%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(80vw 45vh at 92% -10%, color-mix(in oklab, var(--green) 24%, transparent), transparent 70%),
+    radial-gradient(70vw 35vh at 0% -20%, color-mix(in oklab, var(--gold) 10%, transparent), transparent 72%),
     var(--bg);
 }
 
@@ -26,17 +29,20 @@ body {
   align-items: end;
   gap: .8rem;
 }
-.brand { margin: 0; color: var(--accent); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+.brand { margin: 0; color: var(--gold); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
 h1 { margin: .2rem 0 0; font-size: clamp(1.2rem, 6vw, 1.9rem); line-height: 1.15; }
 
 .btn {
-  border: 1px solid color-mix(in oklab, var(--accent) 38%, white 10%);
-  background: color-mix(in oklab, var(--accent) 15%, transparent);
+  border: 1px solid color-mix(in oklab, var(--gold) 40%, white 8%);
+  background: color-mix(in oklab, var(--gold) 14%, transparent);
   color: var(--text);
   border-radius: 999px;
   padding: .46rem .78rem;
   font-size: .82rem;
+  transition: transform .12s ease, filter .2s ease;
 }
+.btn:active { transform: scale(.96); }
+.btn:hover { filter: brightness(1.1); }
 
 .app { padding: .85rem; display: grid; gap: .72rem; }
 .hero, .strip, .panel {
@@ -45,21 +51,31 @@ h1 { margin: .2rem 0 0; font-size: clamp(1.2rem, 6vw, 1.9rem); line-height: 1.15
   background: color-mix(in oklab, var(--surface) 86%, black);
 }
 
-.hero { padding: .9rem; }
-.hero-kicker { margin: 0; color: var(--accent); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
+.hero {
+  padding: .9rem;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--green) 18%, transparent);
+}
+.hero-kicker { margin: 0; color: var(--gold); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; }
 h2 { margin: .34rem 0 .3rem; font-size: clamp(1rem, 4.6vw, 1.35rem); }
 #summary { margin: 0; color: var(--muted); font-size: .88rem; }
 .hero-row { margin-top: .72rem; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem; }
 .progress-wrap { height: 8px; border-radius: 999px; background: rgba(255,255,255,.12); overflow: hidden; }
-.progress { width: 0; height: 100%; background: linear-gradient(90deg, var(--accent), oklch(0.82 0.1 190)); transition: width .3s ease; }
+.progress {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--green-soft), var(--green));
+  box-shadow: 0 0 14px color-mix(in oklab, var(--green) 55%, transparent);
+  transition: width .3s ease;
+}
 .score, .updated { margin: .55rem 0 0; color: var(--muted); font-size: .78rem; }
 
 .strip { padding: .55rem; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .45rem; }
 .metric { padding: .35rem .3rem; text-align: center; }
 .metric p { margin: 0; color: var(--muted); font-size: .64rem; text-transform: uppercase; }
-.metric strong { display: block; margin-top: .15rem; font-size: .95rem; }
+.metric strong { display: block; margin-top: .15rem; font-size: .95rem; color: var(--green); }
 
-.panel { padding: .72rem; }
+.panel { padding: .72rem; transition: border-color .2s ease, transform .2s ease; }
+.panel:hover { border-color: color-mix(in oklab, var(--green) 40%, var(--line)); transform: translateY(-1px); }
 .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .5rem; }
 h3 { margin: 0; font-size: .94rem; }
 .panel-head span { color: var(--muted); font-size: .75rem; }
@@ -74,7 +90,8 @@ h3 { margin: 0; font-size: .94rem; }
 .item .title, .repo .name { margin: 0; font-size: .85rem; font-weight: 600; }
 .item .meta, .repo .status { margin: .14rem 0 0; color: var(--muted); font-size: .75rem; }
 .item .desc { margin: .2rem 0 0; font-size: .78rem; color: color-mix(in oklab, var(--text) 90%, var(--muted)); }
-.repo { text-decoration: none; color: inherit; }
+.repo { text-decoration: none; color: inherit; transition: border-color .2s ease, box-shadow .2s ease; }
+.repo:hover { border-color: color-mix(in oklab, var(--gold) 55%, var(--line)); box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 20%, transparent); }
 
 @media (min-width: 860px) {
   .app { grid-template-columns: repeat(2, minmax(0,1fr)); }
