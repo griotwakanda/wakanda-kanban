@@ -3,128 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wakanda Mission Board</title>
+    <title>Wakanda AI Command</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
+    <div class="bg-glow glow-a"></div>
+    <div class="bg-glow glow-b"></div>
+
+    <header class="top">
       <div>
-        <p class="kicker">Wakanda Mission</p>
-        <h1>Mobile Command Board</h1>
+        <p class="brand">OpenClaw · Wakanda</p>
+        <h1>AI Mission Command</h1>
       </div>
-      <div class="topbar-actions">
-        <p id="last-updated">Updated now</p>
-        <button id="refresh-btn" class="btn">Refresh</button>
-      </div>
+      <button id="refresh-btn" class="btn">Refresh</button>
     </header>
 
-    <main class="wrap">
-      <section class="hero" id="mission">
-        <h2 id="mission-headline">Execution aligned</h2>
-        <p id="mission-summary">Loading state…</p>
-        <div class="progress-track">
-          <div id="mission-progress-bar" class="progress-fill"></div>
+    <main class="app">
+      <section class="hero">
+        <p class="hero-kicker">Live execution state</p>
+        <h2 id="headline">Loading mission pulse…</h2>
+        <p id="summary">Reading board data.</p>
+
+        <div class="hero-row">
+          <div class="progress-wrap">
+            <div id="progress" class="progress"></div>
+          </div>
+          <p id="score" class="score">0 / 100</p>
         </div>
-        <p id="mission-progress-label" class="muted">Momentum score loading…</p>
+
+        <p id="last-updated" class="updated">Updated just now</p>
       </section>
 
-      <section class="quick-metrics">
-        <article>
-          <p>Active cron</p>
-          <strong id="mini-active-cron">0</strong>
-        </article>
-        <article>
-          <p>In progress</p>
-          <strong id="mini-in-progress">0</strong>
-        </article>
-        <article>
-          <p>Done</p>
-          <strong id="mini-done">0</strong>
-        </article>
+      <section class="strip" id="metrics"></section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Ops</h3>
+          <span id="agents-count"></span>
+        </div>
+        <div id="agents-list" class="list"></div>
       </section>
 
-      <section class="section">
-        <h3>Snapshot</h3>
-        <div id="stats-grid" class="simple-grid"></div>
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Cron Rhythm</h3>
+          <span id="cron-count"></span>
+        </div>
+        <div id="cron-list" class="list"></div>
       </section>
 
-      <section class="section">
-        <h3>Agents</h3>
-        <div id="agent-team" class="stack"></div>
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Current Pipeline</h3>
+          <span id="cards-count"></span>
+        </div>
+        <div id="pipeline" class="list"></div>
       </section>
 
-      <section class="section">
-        <h3>Cron</h3>
-        <div id="cron-jobs" class="stack"></div>
-      </section>
-
-      <section class="section">
-        <h3>Repositories</h3>
-        <div id="repositories" class="stack"></div>
-      </section>
-
-      <section class="section">
-        <h3>Kanban</h3>
-        <div id="board-columns" class="board-grid"></div>
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Repositories</h3>
+          <span id="repos-count"></span>
+        </div>
+        <div id="repos" class="repos"></div>
       </section>
     </main>
-
-    <template id="stat-template">
-      <article class="stat-line">
-        <p class="stat-label"></p>
-        <h3 class="stat-value"></h3>
-      </article>
-    </template>
-
-    <template id="agent-template">
-      <article class="row-card">
-        <p class="card-emoji"></p>
-        <div>
-          <h3 class="card-title"></h3>
-          <p class="card-subtitle"></p>
-          <p class="card-description"></p>
-        </div>
-      </article>
-    </template>
-
-    <template id="cron-template">
-      <article class="row-card">
-        <p class="card-emoji">⏰</p>
-        <div>
-          <h3 class="card-title"></h3>
-          <p class="card-subtitle"></p>
-          <div class="cron-meta">
-            <span class="status-badge"></span>
-            <span class="tag-badge"></span>
-          </div>
-          <p class="card-description"></p>
-        </div>
-      </article>
-    </template>
-
-    <template id="repo-template">
-      <a class="row-card repo" target="_blank" rel="noopener noreferrer">
-        <div>
-          <h3 class="card-title"></h3>
-          <p class="card-subtitle"></p>
-          <p class="card-description"></p>
-        </div>
-      </a>
-    </template>
-
-    <template id="column-template">
-      <article class="kanban-column">
-        <header>
-          <h3 class="column-name"></h3>
-          <span class="column-count"></span>
-        </header>
-        <p class="column-description"></p>
-        <ul class="column-tasks"></ul>
-      </article>
-    </template>
 
     <script src="app.js" type="module"></script>
   </body>
