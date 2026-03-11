@@ -38,19 +38,20 @@ function render(data) {
   document.getElementById('last-updated').textContent = fmtDate(data.updatedAt);
 
   const metrics = [
-    ['Agents', agents.length],
-    ['Cron', cron.length],
-    ['Progress', inProgress],
-    ['Done', done]
+    ['Scan', agents.length],
+    ['Analyze', cron.length],
+    ['Convert', inProgress],
+    ['Ship', done]
   ];
   document.getElementById('metrics').innerHTML = metrics
     .map(([label, value]) => `<article class="tile"><p class="label">${escapeHtml(label)}</p><p class="value">${escapeHtml(value)}</p></article>`)
     .join('');
 
   const opsRows = [
-    ...cron.slice(0, 3).map((c) => ({ t: `${c.icon || '⏰'} ${c.name}`, m: `${c.schedule} · ${c.state}` })),
-    ...cards.slice(0, 2).map((c) => ({ t: c.title, m: `${c.column} · ${c.status || ''}` }))
+    ...cron.slice(0, 4).map((c) => ({ t: `${c.icon || '⏰'} ${c.name}`, m: `${c.schedule} · ${c.state}` })),
+    ...cards.slice(0, 3).map((c) => ({ t: c.title, m: `${c.column} · ${c.status || ''}` }))
   ];
+
   document.getElementById('ops-list').innerHTML = opsRows
     .map((r) => `<article class="row"><p class="t">${escapeHtml(r.t)}</p><p class="m">${escapeHtml(r.m)}</p></article>`)
     .join('');
