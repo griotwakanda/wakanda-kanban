@@ -6,101 +6,81 @@
     <title>Wakanda Mission Board</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="aurora aurora-a"></div>
-    <div class="aurora aurora-b"></div>
+    <header class="topbar">
+      <div>
+        <p class="kicker">Wakanda Mission</p>
+        <h1>Mobile Command Board</h1>
+      </div>
+      <div class="topbar-actions">
+        <p id="last-updated">Updated now</p>
+        <button id="refresh-btn" class="btn">Refresh</button>
+      </div>
+    </header>
 
-    <div class="app-shell">
-      <header class="app-header">
-        <div>
-          <p class="eyebrow">Wakanda Board</p>
-          <h1>Mission Intelligence</h1>
-          <p class="subtitle">Gemini-style dark cockpit with live execution context for agents, cron cadence, repos, and active work.</p>
+    <main class="wrap">
+      <section class="hero" id="mission">
+        <h2 id="mission-headline">Execution aligned</h2>
+        <p id="mission-summary">Loading state…</p>
+        <div class="progress-track">
+          <div id="mission-progress-bar" class="progress-fill"></div>
         </div>
-        <div class="header-meta">
-          <p id="last-updated">Last updated just now</p>
-          <button class="ghost-btn" id="refresh-btn">Refresh data</button>
-        </div>
-      </header>
+        <p id="mission-progress-label" class="muted">Momentum score loading…</p>
+      </section>
 
-      <main class="content">
-        <section class="panel mission-panel" id="mission">
-          <div class="panel-head">
-            <h2>Mission pulse</h2>
-            <span class="chip">Live</span>
-          </div>
-          <div class="mission-grid">
-            <article class="mission-hero">
-              <p class="mission-kicker">Operator Mode</p>
-              <h3 id="mission-headline">Loading mission status…</h3>
-              <p id="mission-summary">Preparing board diagnostics…</p>
-              <div class="progress-track">
-                <div id="mission-progress-bar" class="progress-fill"></div>
-              </div>
-              <p id="mission-progress-label" class="progress-label">Momentum score loading…</p>
-              <div class="mission-actions">
-                <button class="action-btn primary">Open cockpit</button>
-                <button class="action-btn secondary">View cron</button>
-              </div>
-            </article>
-            <article class="metric-card">
-              <p>Active cron</p>
-              <strong id="mini-active-cron">0</strong>
-            </article>
-            <article class="metric-card">
-              <p>In progress</p>
-              <strong id="mini-in-progress">0</strong>
-            </article>
-            <article class="metric-card">
-              <p>Done lane</p>
-              <strong id="mini-done">0</strong>
-            </article>
-          </div>
-          <div id="stats-grid" class="stats-grid"></div>
-        </section>
+      <section class="quick-metrics">
+        <article>
+          <p>Active cron</p>
+          <strong id="mini-active-cron">0</strong>
+        </article>
+        <article>
+          <p>In progress</p>
+          <strong id="mini-in-progress">0</strong>
+        </article>
+        <article>
+          <p>Done</p>
+          <strong id="mini-done">0</strong>
+        </article>
+      </section>
 
-        <section class="panel" id="agents">
-          <div class="panel-head">
-            <h2>Agents</h2>
-          </div>
-          <div id="agent-team" class="card-grid"></div>
-        </section>
+      <section class="section">
+        <h3>Snapshot</h3>
+        <div id="stats-grid" class="simple-grid"></div>
+      </section>
 
-        <section class="panel" id="cron">
-          <div class="panel-head">
-            <h2>Cron cadence</h2>
-          </div>
-          <div id="cron-jobs" class="card-grid"></div>
-        </section>
+      <section class="section">
+        <h3>Agents</h3>
+        <div id="agent-team" class="stack"></div>
+      </section>
 
-        <section class="panel" id="repos">
-          <div class="panel-head">
-            <h2>Repositories</h2>
-          </div>
-          <div id="repositories" class="card-grid"></div>
-        </section>
+      <section class="section">
+        <h3>Cron</h3>
+        <div id="cron-jobs" class="stack"></div>
+      </section>
 
-        <section class="panel" id="board">
-          <div class="panel-head">
-            <h2>Kanban lanes</h2>
-          </div>
-          <div id="board-columns" class="board-grid"></div>
-        </section>
-      </main>
-    </div>
+      <section class="section">
+        <h3>Repositories</h3>
+        <div id="repositories" class="stack"></div>
+      </section>
+
+      <section class="section">
+        <h3>Kanban</h3>
+        <div id="board-columns" class="board-grid"></div>
+      </section>
+    </main>
 
     <template id="stat-template">
-      <article class="stat-card">
-        <h3 class="stat-value"></h3>
+      <article class="stat-line">
         <p class="stat-label"></p>
+        <h3 class="stat-value"></h3>
       </article>
     </template>
 
     <template id="agent-template">
-      <article class="info-card">
+      <article class="row-card">
         <p class="card-emoji"></p>
         <div>
           <h3 class="card-title"></h3>
@@ -111,7 +91,7 @@
     </template>
 
     <template id="cron-template">
-      <article class="info-card">
+      <article class="row-card">
         <p class="card-emoji">⏰</p>
         <div>
           <h3 class="card-title"></h3>
@@ -126,10 +106,12 @@
     </template>
 
     <template id="repo-template">
-      <a class="repo-card" target="_blank" rel="noopener noreferrer">
-        <h3 class="card-title"></h3>
-        <p class="card-subtitle"></p>
-        <p class="card-description"></p>
+      <a class="row-card repo" target="_blank" rel="noopener noreferrer">
+        <div>
+          <h3 class="card-title"></h3>
+          <p class="card-subtitle"></p>
+          <p class="card-description"></p>
+        </div>
       </a>
     </template>
 
